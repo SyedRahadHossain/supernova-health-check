@@ -1,0 +1,38 @@
+[
+  {
+    "id": "1",
+    "name": "Pathology",
+    "description": " Biochemistry, Immunology, Serology, Microbiology, Clinical Pathology, Histopathology, Molecular Laboratory ",
+    "img": "https://i.ibb.co/njR04w5/pathology.jpg"
+  },
+  {
+    "id": "2",
+    "name": "Radiology & Imaging",
+    "description": "Mri, X-Ray,DENTAL X-Ray USG, CT Scan,ECG, EEG, ETT, Fiber Optic LARYNGOSCOPY, Colonoscopy, Echocardiogram",
+    "img": "https://i.ibb.co/PDDgPgY/Radiology.jpg"
+  },
+  {
+    "id": "3",
+    "name": "Health Package",
+    "description": "We have different health packages. Monthly package, Yearly package, Family package, Old Package, child package.  ",
+    "img": "https://i.ibb.co/d21kGSV/health-package.jpg"
+  },
+  {
+    "id": "4",
+    "name": "Home Service",
+    "description": "We provide home service. Our man will collect necessary sample from your home. After diagnostic our man will home delivery your report.",
+    "img": "https://i.ibb.co/KsW2bHX/blood-collection.jpg"
+  },
+  {
+    "id": "5",
+    "name": "Pharmacy",
+    "description": "We provide all kinds of life saving medicine, which are available in Supernova. Our aim is to provide good medicine and best service quality to the patients.",
+    "img": "https://i.ibb.co/LQDbQLb/pharmacy.jpg"
+  },
+  {
+    "id": "6",
+    "name": "Ambulance",
+    "description": "We provide emergency ambulance service. This service is 24/7. All life saving emergency equipments are available in ambulance.",
+    "img": "https://i.ibb.co/LvWvKgy/ambulance.jpg"
+  }
+]
