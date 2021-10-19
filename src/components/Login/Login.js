@@ -1,14 +1,107 @@
+import { createUserWithEmailAndPassword, getAuth, sendEmailVerification, sendPasswordResetEmail, signInWithEmailAndPassword, updateProfile } from '@firebase/auth';
 import React, { useState } from 'react';
 import useAuth from '../../hooks/useAuth';
+import initializeAuthentication from '../../Firebase/firebase.init';
+
+initializeAuthentication();
+
 
 const Login = () => {
-    const { signInUsingGoogle, handleRegistration, handleNameChange, handleEmailChange, handlePasswordChange, handleResetPassword, error } = useAuth();
+    const { signInUsingGoogle } = useAuth();
 
+    const [name, setName] = useState('');
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [error, setError] = useState('');
     const [isLogin, setIsLogin] = useState(false);
+
+    const auth = getAuth();
+
 
     const toggleLogin = e => {
         setIsLogin(e.target.checked);
     }
+
+    const handleNameChange = e => {
+        setName(e.target.value);
+    }
+
+    const handleEmailChange = e => {
+        setEmail(e.target.value)
+    }
+
+    const handlePasswordChange = e => {
+        setPassword(e.target.value);
+    }
+
+    const handleRegistration = e => {
+        e.preventDefault();
+        console.log(email, password);
+        if (password.length < 6) {
+            setError("Password must be at least 6 characters long")
+            return;
+        }
+        if (!/(?=.*[A-Z].*[A-Z])/.test(password)) {
+            setError("Password must contain two upper case");
+            return;
+        }
+        // isLogin ? processLogin(email, password) : registerNewUer(email, password);
+        if (isLogin) {
+            processLogin(email, password);
+        }
+        else {
+            registerNewUser(email, password);
+        }
+    }
+
+    const processLogin = (email, password) => {
+        signInWithEmailAndPassword(auth, email, password)
+            .then(result => {
+                const user = result.user;
+                console.log(user);
+                setError('');
+            })
+            .catch(error => {
+                setError(error.message)
+            })
+    }
+
+    const registerNewUser = (email, password) => {
+        createUserWithEmailAndPassword(auth, email, password)
+            .then(result => {
+                const user = result.user;
+                console.log(user);
+                setError('');
+                verifyEmail();
+                setUserName();
+                window.location.reload();
+            })
+            .catch(error => {
+                setError(error.message);
+            })
+    }
+
+    const setUserName = () => {
+        updateProfile(auth.currentUser, { displayName: name })
+            .then(result => {
+
+            })
+    }
+
+    const verifyEmail = () => {
+        sendEmailVerification(auth.currentUser)
+            .then(result => {
+                console.log(result);
+            })
+    }
+
+    const handleResetPassword = () => {
+        sendPasswordResetEmail(auth, email)
+            .then(result => {
+
+            })
+    }
+
 
 
     return (
@@ -18,8 +111,7 @@ const Login = () => {
             <br />
 
 
-            -----------or----------
-
+            <h3 className="text-primary my-5">----------Or Create Account---------- </h3>
 
             <div>
                 <div className="my-5">
