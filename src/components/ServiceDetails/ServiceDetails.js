@@ -17,7 +17,7 @@ const ServiceDetails = () => {
     return (
         <div className="container">
             <h2 className="text-primary my-3">Service Details</h2>
-            <Card>
+            <Card className="my-4">
                 <Card.Img variant="top" src={singleDetail[0]?.img} />
                 <Card.Body>
                 <Card.Title>Service name: {singleDetail[0]?.name}</Card.Title>

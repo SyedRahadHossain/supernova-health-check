@@ -28,13 +28,13 @@ const Header = () => {
                             to="/membership">Membership</Nav.Link>
 
                         {user?.email ?
-                            <Button onClick={logOut} className="me-3" variant="light">Logout</Button> :
+                            <Button onClick={logOut} className="me-3 text-primary fw-bold" variant="light">Log Out</Button> :
                             <Nav.Link as={Link}
                                 className="text-white"
                                 to="/login">Login</Nav.Link>}
                         {user.email &&
                             <Navbar.Text>
-                                Hello! <Link className="text-decoration-none" to="/home"> {user?.displayName}</Link>
+                                Welcome! <Link className="text-decoration-none" to="/home"> {user?.displayName}</Link>
                             </Navbar.Text>}
                     </Navbar.Collapse>
                 </Container>

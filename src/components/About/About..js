@@ -1,13 +1,13 @@
 import React from 'react';
 import { Card, CardGroup } from 'react-bootstrap';
-import equiptments from "../../images/equiptments.jpg"
+import equipments from "../../images/equipments.jpg"
 
 const About = () => {
     return (
         <div className="container">
-            <div className="row">
+            <div className="row my-5 border rounded shadow">
                 <div className="col-md-6">
-                    <img className="img-fluid" src={equiptments} alt="" />
+                    <img className="img-fluid" src={equipments} alt="" />
                 </div>
                 <div className="col-md-6">
                     <div className="p-4">
@@ -23,8 +23,8 @@ const About = () => {
             </div>
             <h2 className="mb-4 text-primary">Our Doctors</h2>
             {/* card */}
-            <CardGroup className="mb-5">
-                <Card>
+            <CardGroup className="mb-5 shadow">
+                <Card className="">
                     <Card.Img style={{ height: "400px" }}
                         className="instructor-img"
                         variant="top"
@@ -56,7 +56,7 @@ const About = () => {
                     />
                     <Card.Body>
                         <Card.Title>Cameroon Dias </Card.Title>
-                        <Card.Text>Doctor</Card.Text>
+                        <Card.Text>Emergency Doctor</Card.Text>
                     </Card.Body>
                 </Card>
             </CardGroup>

@@ -2,6 +2,7 @@ import { createUserWithEmailAndPassword, getAuth, sendEmailVerification, sendPas
 import React, { useState } from 'react';
 import useAuth from '../../hooks/useAuth';
 import initializeAuthentication from '../../Firebase/firebase.init';
+import login from "../../images/login.jpg"
 
 initializeAuthentication();
 
@@ -36,16 +37,18 @@ const Login = () => {
 
     const handleRegistration = e => {
         e.preventDefault();
-        console.log(email, password);
+        // console.log(email, password);
+
         if (password.length < 6) {
             setError("Password must be at least 6 characters long")
             return;
         }
+
         if (!/(?=.*[A-Z].*[A-Z])/.test(password)) {
             setError("Password must contain two upper case");
             return;
         }
-        // isLogin ? processLogin(email, password) : registerNewUer(email, password);
+
         if (isLogin) {
             processLogin(email, password);
         }
@@ -102,55 +105,65 @@ const Login = () => {
             })
     }
 
-
-
     return (
         <div className='container'>
-            <h3 className="my-4 text-primary">Login via Google</h3>
-            <button onClick={signInUsingGoogle} className="btn btn-primary my-3">Google Sign In</button>
-            <br />
-
-
-            <h3 className="text-primary my-5">----------Or Create Account---------- </h3>
-
             <div>
-                <div className="my-5">
-                    <form onSubmit={handleRegistration}>
-                        <h3 className="text-primary text-center">Please {isLogin ? 'Login' : 'Register'}</h3>
+                <img className="img-fluid mt-3" src={login} alt="" />
+            </div>
+            <div className="row border shadow rounded my-4 mx-2">
+                {/* social login */}
+                <div className="col-md-5 border-end border-2 border-primary ">
+                    <h3 className="my-4 text-primary">Login With Social Network</h3>
+                    <button onClick={signInUsingGoogle} className="btn btn-danger my-3">
+                        <i class="fab fa-google"></i> Login with Google</button>
+                    <br />
+                    <button  className="btn btn-primary my-3">
+                        <i class="fab fa-facebook-f"></i> Login with Facebook</button>
+                </div>
+                {/* email login */}
+                <div className="col-md-7 border-start border-primary ">
+                    <div className="m-3">
+                        <form onSubmit={handleRegistration}>
+                            <h3 className="text-primary text-center">Please {isLogin ? 'Login' : 'Register'}</h3>
 
-                        {!isLogin && <div className="row mb-3">
-                            <label htmlFor="inputName" className="col-sm-2 col-form-label">Name</label>
-                            <div className="col-sm-10">
-                                <input onBlur={handleNameChange} type="text" className="form-control" id="inputName" placeholder="Your Name" required />
-                            </div>
-                        </div>}
-                        <div className="row mb-3">
-                            <label htmlFor="inputEmail3" className="col-sm-2 col-form-label">Email</label>
-                            <div className="col-sm-10">
-                                <input onBlur={handleEmailChange} type="email" className="form-control" id="inputEmail3" required />
-                            </div>
-                        </div>
-                        <div className="row mb-3">
-                            <label htmlFor="inputPassword3" className="col-sm-2 col-form-label">Password</label>
-                            <div className="col-sm-10">
-                                <input type="password" onBlur={handlePasswordChange} className="form-control" id="inputPassword3" required />
-                            </div>
-                        </div>
-                        <div className="row mb-3">
-                            <div className="col-sm-10 offset-sm-2">
-                                <div className="form-check">
-                                    <input onChange={toggleLogin} className="form-check-input" type="checkbox" id="gridCheck1" />
-                                    <label className="form-check-label" htmlFor="gridCheck1">
-                                        Already Registered?
-                                    </label>
+                            {!isLogin && <div className="row mb-3">
+                                <label htmlFor="inputName" className="col-sm-2 col-form-label">Name</label>
+                                <div className="col-sm-10">
+                                    <input onBlur={handleNameChange} type="text" className="form-control" id="inputName" placeholder="Your Name" required />
+                                </div>
+                            </div>}
+                            <div className="row mb-3">
+                                <label htmlFor="inputEmail3" className="col-sm-2 col-form-label">Email</label>
+                                <div className="col-sm-10">
+                                    <input onBlur={handleEmailChange} type="email" className="form-control" id="inputEmail3"
+                                        placeholder="Your Email "
+                                        required />
                                 </div>
                             </div>
-                        </div>
-                        <div className="row mb-3 text-danger">{error}</div>
-                        <button type="submit" className="btn btn-primary">{isLogin ? 'Login' : 'Register'}</button>
-                        <br /> <br />
-                        <button type="button" onClick={handleResetPassword} className="btn btn-dark btn-sm">Reset Password</button>
-                    </form>
+                            <div className="row mb-3">
+                                <label htmlFor="inputPassword3" className="col-sm-2 col-form-label">Password</label>
+                                <div className="col-sm-10">
+                                    <input type="password" onBlur={handlePasswordChange} className="form-control" id="inputPassword3"
+                                        placeholder="Your password"
+                                        required />
+                                </div>
+                            </div>
+                            <div className="row mb-3">
+                                <div className="col-sm-10 offset-sm-2 d-flex justify-content-center">
+                                    <div className="form-check">
+                                        <input onChange={toggleLogin} className="form-check-input" type="checkbox" id="gridCheck1" />
+                                        <label className="form-check-label" htmlFor="gridCheck1">
+                                            Already Registered?
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="row mb-3 text-danger">{error}</div>
+                            <button type="submit" className="btn btn-primary">{isLogin ? 'Login' : 'Register'}</button>
+                            <br /> <br />
+                            <button type="button" onClick={handleResetPassword} className="btn btn-danger btn-sm">Reset Password</button>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>

@@ -15,7 +15,7 @@ const Banner = () => {
                         alt="First slide"
                     />
                     <Carousel.Caption>
-                        <h1 className="fw-bold">We have best radiology equipment </h1>
+                        <h1 className="text-primary rounded-pill fw-bold text-center py-2 bg-light">We Have Best Radiology Equipment</h1>
                     </Carousel.Caption>
                 </Carousel.Item>
                 <Carousel.Item>
@@ -26,7 +26,7 @@ const Banner = () => {
                     />
 
                     <Carousel.Caption>
-                        <h1>Best doctors are in our team</h1>
+                        <h1 className="text-primary rounded-pill fw-bold text-center py-2 bg-light">Best Doctors Are In Our Team</h1>
 
                     </Carousel.Caption>
                 </Carousel.Item>
@@ -38,7 +38,7 @@ const Banner = () => {
                     />
 
                     <Carousel.Caption>
-                        <h1>We are committed to give our best  </h1>
+                        <h1 className="text-primary rounded-pill fw-bold text-center py-2 bg-light">We Are Committed To Give Our Best  </h1>
                     </Carousel.Caption>
                 </Carousel.Item>
             </Carousel>
