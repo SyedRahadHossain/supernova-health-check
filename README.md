@@ -2,6 +2,13 @@
 
 ## You can visit [Supernova health check](https://supernova-health-check.web.app/)
 
+## About Website
+
+    It's a website for Supernova Health Check diagnostic center. 
+    This website made by React, React Bootstrap, React Router.
+    For user authentication Firebase authentication used.
+    User can authenticate by Google or Email login. 
+
 ## Website Information:
 
 * The main purpose of this website is to provide diagnostics services.
