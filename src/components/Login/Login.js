@@ -1,109 +1,11 @@
-import { createUserWithEmailAndPassword, getAuth, sendEmailVerification, sendPasswordResetEmail, signInWithEmailAndPassword, updateProfile } from '@firebase/auth';
-import React, { useState } from 'react';
+import React from 'react';
 import useAuth from '../../hooks/useAuth';
-import initializeAuthentication from '../../Firebase/firebase.init';
 import login from "../../images/login.jpg"
 
-initializeAuthentication();
 
 
 const Login = () => {
-    const { signInUsingGoogle } = useAuth();
-
-    const [name, setName] = useState('');
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState('');
-    const [error, setError] = useState('');
-    const [isLogin, setIsLogin] = useState(false);
-
-    const auth = getAuth();
-
-
-    const toggleLogin = e => {
-        setIsLogin(e.target.checked);
-    }
-
-    const handleNameChange = e => {
-        setName(e.target.value);
-    }
-
-    const handleEmailChange = e => {
-        setEmail(e.target.value)
-    }
-
-    const handlePasswordChange = e => {
-        setPassword(e.target.value);
-    }
-
-    const handleRegistration = e => {
-        e.preventDefault();
-        // console.log(email, password);
-
-        if (password.length < 6) {
-            setError("Password must be at least 6 characters long")
-            return;
-        }
-
-        if (!/(?=.*[A-Z].*[A-Z])/.test(password)) {
-            setError("Password must contain two upper case");
-            return;
-        }
-
-        if (isLogin) {
-            processLogin(email, password);
-        }
-        else {
-            registerNewUser(email, password);
-        }
-    }
-
-    const processLogin = (email, password) => {
-        signInWithEmailAndPassword(auth, email, password)
-            .then(result => {
-                const user = result.user;
-                console.log(user);
-                setError('');
-            })
-            .catch(error => {
-                setError(error.message)
-            })
-    }
-
-    const registerNewUser = (email, password) => {
-        createUserWithEmailAndPassword(auth, email, password)
-            .then(result => {
-                const user = result.user;
-                console.log(user);
-                setError('');
-                verifyEmail();
-                setUserName();
-                window.location.reload();
-            })
-            .catch(error => {
-                setError(error.message);
-            })
-    }
-
-    const setUserName = () => {
-        updateProfile(auth.currentUser, { displayName: name })
-            .then(result => {
-
-            })
-    }
-
-    const verifyEmail = () => {
-        sendEmailVerification(auth.currentUser)
-            .then(result => {
-                console.log(result);
-            })
-    }
-
-    const handleResetPassword = () => {
-        sendPasswordResetEmail(auth, email)
-            .then(result => {
-
-            })
-    }
+    const { signInUsingGoogle, handleEmailChange, handleNameChange, handlePasswordChange, handleRegistration, handleResetPassword, isLogin, error, toggleLogin } = useAuth();
 
     return (
         <div className='container'>
@@ -115,10 +17,10 @@ const Login = () => {
                 <div className="col-md-5 border-end border-2 border-primary ">
                     <h3 className="my-4 text-primary">Login With Social Network</h3>
                     <button onClick={signInUsingGoogle} className="btn btn-danger my-3">
-                        <i class="fab fa-google"></i> Login with Google</button>
+                        <i className="fab fa-google"></i> Login with Google</button>
                     <br />
-                    <button  className="btn btn-primary my-3">
-                        <i class="fab fa-facebook-f"></i> Login with Facebook</button>
+                    <button className="btn btn-primary my-3">
+                        <i className="fab fa-facebook-f"></i> Login with Facebook</button>
                 </div>
                 {/* email login */}
                 <div className="col-md-7 border-start border-primary ">
@@ -158,7 +60,9 @@ const Login = () => {
                                     </div>
                                 </div>
                             </div>
-                            <div className="row mb-3 text-danger">{error}</div>
+                            <div className="row mb-3 text-danger">
+                                <p className="text-center">{error}</p>
+                            </div>
                             <button type="submit" className="btn btn-primary">{isLogin ? 'Login' : 'Register'}</button>
                             <br /> <br />
                             <button type="button" onClick={handleResetPassword} className="btn btn-danger btn-sm">Reset Password</button>

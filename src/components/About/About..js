@@ -16,7 +16,7 @@ const About = () => {
                         <p>
                             Supernova health check is an advanced Centre for diagnostic and medical services. It is one of the prestigious diagnostic complexes which started its activities in 1983. This is the largest diagnostic services provider organization in private sector of the country. It is been pioneer in introducing world latest medical equipments and advanced technology to provide round the clock medical investigations and consultancy services.
 
-                            LEGAL STATUS Supernova is a private limited company registered with the Ministry of Health & Family Welfare,
+                            LEGAL STATUS Supernova is a private limited company registered with the Ministry of Health & Family Welfare.
                         </p>
                     </div>
                 </div>

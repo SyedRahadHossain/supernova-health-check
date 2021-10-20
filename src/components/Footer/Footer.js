@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom';
 const Footer = () => {
     return (
         <div>
-      <div className="bg-dark p-3">
+      <div className="bg-primary p-3">
         <div className="container">
           <div className="row">
             <div className="col-md-6">
@@ -15,7 +15,7 @@ const Footer = () => {
                   <span className="fs-6">
                     Best value health check  <br />
                     Be a member  <br />
-                    Get discount up to 45%
+                    Get discount up to 40%
                   </span>
                 </h3>
               </div>
