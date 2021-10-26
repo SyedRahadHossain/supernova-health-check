@@ -1,9 +1,9 @@
-import React from 'react';
-import { NavLink } from 'react-router-dom';
+import React from "react";
+import { NavLink } from "react-router-dom";
 
 const Footer = () => {
-    return (
-        <div>
+  return (
+    <div>
       <div className="bg-primary p-3">
         <div className="container">
           <div className="row">
@@ -13,8 +13,8 @@ const Footer = () => {
                   Supernova Health Check
                   <br />
                   <span className="fs-6">
-                    Best value health check  <br />
-                    Be a member  <br />
+                    Best value health check <br />
+                    Be a member <br />
                     Get discount up to 40%
                   </span>
                 </h3>
@@ -61,7 +61,7 @@ const Footer = () => {
         <small className="text-white ">© copyright to Supernova 2021</small>
       </div>
     </div>
-    );
+  );
 };
 
 export default Footer;
