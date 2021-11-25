@@ -11,6 +11,7 @@ import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
 import ServiceDetails from "./components/ServiceDetails/ServiceDetails";
 import AuthProvider from "./contexts/AuthProvider";
 
+// testing git push
 function App() {
   return (
     <div className="App">
